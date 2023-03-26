@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('werehouses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone_number');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+            $table->float('price');
+            $table->integer('quentity');
+            $table->date('current_date');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('status');
+            $table->integer('category_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('werehouses');
     }
 };
