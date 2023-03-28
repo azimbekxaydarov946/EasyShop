@@ -19,10 +19,23 @@ class Order extends Model
         'status',
         'all_price',
         'delivery_price',
-        'user_id',
         'address',
         'pay_type',
         'sequence_number',
+        'user_id',
         'payme_history_id'
     ];
+
+    public function order_detail()
+    {
+        return $this->hasOne(OrderDetail::class, 'order_detail_id', 'id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+    public function payme_history()
+    {
+        return $this->belongsTo(Payme_history::class, 'payme_history_id', 'id');
+    }
 }

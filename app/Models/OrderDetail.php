@@ -20,4 +20,21 @@ class OrderDetail extends Model
         'quentity',
         'status'
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'order_id', 'id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
+    public function review()
+    {
+        return $this->hasMany(Review::class, 'order_id', 'id');
+    }
 }

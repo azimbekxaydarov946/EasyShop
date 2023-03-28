@@ -20,4 +20,9 @@ class UserDetail extends Model
         'address',
         'profile_photo_path'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

@@ -15,13 +15,38 @@ class Product extends Model
     [
         'name',
         'slug',
-        'category_id',
         'price',
         'quentity',
         'image',
         'images',
         'status',
         'description',
-        'werehouse_id'
+        'category_id',
+        'warehouse_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+    public function warehouse()
+    {
+        return $this->belongsTo(Warehouse::class, 'warehouse_id', 'id');
+    }
+    public function cart()
+    {
+        return $this->hasMany(Cart::class, 'product_id', 'id');
+    }
+    public function order_detail()
+    {
+        return $this->hasMany(OrderDetail::class, 'product_id', 'id');
+    }
+    public function review()
+    {
+        return $this->hasMany(Review::class, 'product_id', 'id');
+    }
+    public function wishlist()
+    {
+        return $this->hasMany(Wishlist::class, 'product_id', 'id');
+    }
 }

@@ -14,7 +14,12 @@ class Payme_history extends Model
         'token',
         'number',
         'expire',
-        'paymet_id',
-        'status'
+        'status',
+        'paymet_id'
     ];
+
+    public function order()
+    {
+        return $this->hasMany(Order::class, 'payme_history_id', 'id');
+    }
 }
